@@ -1,6 +1,6 @@
 import time
 from bs4 import BeautifulSoup
-from CUKU.constant import CHROME_DRIVER_LOC,PATH,FORMAT,COLUMN_1,COLUMN_2,COLUMN_3,COLUMN_4
+from CUKU.constant import CHROME_DRIVER_LOC,FORMAT,COLUMN_1,COLUMN_2,COLUMN_3,COLUMN_4
 import urllib
 import os
 import pandas as pd
@@ -9,6 +9,7 @@ def path_to_image_html(path):
     return '<img src ="'+ path + '" width="120" >'
 
 def Finding_All_The_Images(Images_needed, driver):
+    driver.find_element("xpath","//*[@id='hdtb-msb']/div[1]/div/div[2]/a").click()
     starting_length = driver.execute_script("return document.body.scrollHeight")
     finished_length = starting_length + 1
     Find_Images = True
@@ -32,7 +33,7 @@ def Finding_All_The_Images(Images_needed, driver):
 
     all_details = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
 
-    if len(all_details) == 0 :
+    if len(all_details) == 0:
         driver.find_element("xpath",'//*[@id="hdtb-msb"]/div[1]/div/div[3]/a').click()
         starting_length = driver.execute_script("return document.body.scrollHeight")
         finished_length = starting_length+1
@@ -56,8 +57,8 @@ def Finding_All_The_Images(Images_needed, driver):
         all_details=soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
         return driver,all_images
     
-def get_google(webdriver,backend=False):
-    if backend == "True":
+def get_google(webdriver,backend):
+    if backend == True:
         op = webdriver.ChromeOptions()
         op.add_argument('headless')
         driver = webdriver.Chrome(executable_path=CHROME_DRIVER_LOC,options=op)
@@ -69,15 +70,18 @@ def get_google(webdriver,backend=False):
     return driver
 
 def enter_search_term(driver,search_term,Keys):
-    box = driver.find_element("xpath","/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
+    try:
+        box = driver.find_element("xpath","/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
+    except:
+        box = driver.find_element("xpath",'//*[@id="APjFqb"]')
     box.send_keys(search_term)
     box.send_keys(Keys.ENTER)
     return driver
 
-def make_dir():
+def make_dir(PATH):
     os.makedirs(PATH,exist_ok=True) 
 
-def create_dataframe_save_images(all_images,Images_needed,dataframe,search_term):
+def create_dataframe_save_images(all_images,Images_needed,dataframe,search_term,PATH):
     for i,image_link in enumerate(all_images[:Images_needed]):
         imageurl = image_link.find("img",class_="rg_i Q4LuWd").get("src")
         alt_image_url = image_link.find("img",class_="rg_i Q4LuWd").get("data-src")
