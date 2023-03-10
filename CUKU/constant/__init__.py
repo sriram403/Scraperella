@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 CLASS_NAME = "images_folder"
 
@@ -14,4 +15,6 @@ COLUMN_3 = "Source_Name"
 COLUMN_4 = "Images"
 
 FORMAT = "jpg"
+
+CURRENT_TIMESTAMP = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
