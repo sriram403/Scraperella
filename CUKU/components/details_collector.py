@@ -22,11 +22,21 @@ def RUN(search_term:str,images_needed:int,backend):
     
     logging.info(">>entering the search term<<")
     print(">>entering the search term<<")
-    time.sleep(2)
-    driver = util.enter_search_term(driver=driver,search_term=search_term,Keys=Keys)
+    try:
+        # time.sleep(2)
+        driver = util.enter_search_term(driver=driver,search_term=search_term,Keys=Keys)
+    except:
+        driver.quit()
+        RUN(search_term,images_needed,backend)
 
-    logging.info(f">>finding {images_needed} images<<")
-    driver,all_images = util.Finding_All_The_Images(Images_needed, driver)
+    try:
+        print(">>finding Images Needed<<")
+        logging.info(f">>finding {images_needed} images<<")
+        driver,all_images = util.Finding_All_The_Images(Images_needed, driver)
+    except Exception as e:
+        driver.quit()
+        print(e)
+        RUN(search_term,images_needed,backend)
     
     logging.info(">>getting the page source(html)<<")
     soup = BeautifulSoup(driver.page_source,"lxml")

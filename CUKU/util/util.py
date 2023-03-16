@@ -4,36 +4,43 @@ from CUKU.constant import CHROME_DRIVER_LOC,FORMAT,COLUMN_1,COLUMN_2,COLUMN_3,CO
 import urllib
 import os
 import pandas as pd
+from CUKU.logger import logging
 
 def path_to_image_html(path):
     return '<img src ="'+ path + '" width="120" >'
 
 def Finding_All_The_Images(Images_needed, driver):
     driver.find_element("xpath","//*[@id='hdtb-msb']/div[1]/div/div[2]/a").click()
-    starting_length = driver.execute_script("return document.body.scrollHeight")
-    finished_length = starting_length + 1
-    Find_Images = True
-    while (starting_length != finished_length) & (Find_Images):
-        starting_length = driver.execute_script("return document.body.scrollHeight")
-        driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
-        soup = BeautifulSoup(driver.page_source,"lxml")
-        all_images = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
-        try:
-            all_images = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
-            if len(all_images) <= Images_needed:
-                time.sleep(5)
-                finished_length = driver.execute_script("return document.body.scrollHeight")
-            else:
-                all_images = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
-                Find_Images = False
-            return driver,all_images
-        except Exception as e:
-            print(f"the exception occured as: {e}")
-    print("finished_scrolling")
-
+    soup = BeautifulSoup(driver.page_source,"lxml")
     all_details = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
-
-    if len(all_details) == 0:
+    logging.info(">>checking the all details length which is ->: {len(all_details)}")
+    if len(all_details) != 0:
+        print("got the image tab")
+        logging.info("got the image tab right away") 
+        starting_length = driver.execute_script("return document.body.scrollHeight")
+        finished_length = starting_length + 1
+        Find_Images = True
+        while (starting_length != finished_length) & (Find_Images):
+            starting_length = driver.execute_script("return document.body.scrollHeight")
+            driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+            soup = BeautifulSoup(driver.page_source,"lxml")
+            all_images = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
+            try:
+                all_images = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
+                if len(all_images) <= Images_needed:
+                    time.sleep(5)
+                    finished_length = driver.execute_script("return document.body.scrollHeight")
+                else:
+                    all_images = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
+                    Find_Images = False
+                return driver,all_images
+            except Exception as e:
+                print(f"the exception occured as: {e}")
+        print("finished_scrolling")
+        return driver,all_images
+    else:
+        logging.info("didn't get the image so checking the near tab")
+        print(">>changing into next tab to check for images<<")
         driver.find_element("xpath",'//*[@id="hdtb-msb"]/div[1]/div/div[3]/a').click()
         starting_length = driver.execute_script("return document.body.scrollHeight")
         finished_length = starting_length+1
@@ -70,10 +77,10 @@ def get_google(webdriver,backend):
     return driver
 
 def enter_search_term(driver,search_term,Keys):
-    try:
-        box = driver.find_element("xpath","/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
-    except:
-        box = driver.find_element("xpath",'//*[@id="APjFqb"]')
+    # try:
+    box = driver.find_element("xpath","/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
+    # except:
+    #     box = driver.find_element("xpath",'//*[@id="APjFqb"]')
     box.send_keys(search_term)
     box.send_keys(Keys.ENTER)
     return driver
