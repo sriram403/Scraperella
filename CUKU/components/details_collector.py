@@ -9,9 +9,9 @@ from CUKU.util import util
 from CUKU.constant import CLASS_NAME
 from CUKU.logger import logging
 
+
 def RUN(search_term:str,images_needed:int,backend):
     class_name = CLASS_NAME
-    
     search_term = search_term
     
     Images_needed = images_needed
@@ -20,10 +20,10 @@ def RUN(search_term:str,images_needed:int,backend):
     print(">>starting the chrome<<")
     driver = util.get_google(webdriver=webdriver,backend=backend)
     
-    logging.info(">>entering the search term<<")
-    print(">>entering the search term<<")
     try:
-        # time.sleep(2)
+        logging.info(">>entering the search term<<")
+        print(">>entering the search term<<")
+        time.sleep(1)
         driver = util.enter_search_term(driver=driver,search_term=search_term,Keys=Keys)
     except:
         driver.quit()
@@ -49,8 +49,7 @@ def RUN(search_term:str,images_needed:int,backend):
     dataframe = util.create_dataframe_new(all_details,Images_needed)
 
     logging.info(">>created a directory(folder to store image)<<")    
-
-    PATH = os.path.join(CLASS_NAME,search_term)
+    PATH = os.path.join("Collected_Data",CLASS_NAME,search_term)
     util.make_dir(PATH) 
 
     logging.info(">>storing all the info and saving the image in the directory<<")
@@ -60,11 +59,10 @@ def RUN(search_term:str,images_needed:int,backend):
     logging.info(">>converting the dataframe into html<<")
     print(">>creating html<<")
     pd.set_option('colheader_justify', 'center')
-
     dataframe.to_html(f"{search_term}_info.html",escape=False,formatters=dict(Images=util.path_to_image_html))
     
     logging.info("SUCCESSFULL-> from CUKU :) ")
-    time.sleep(5)
+    time.sleep(2)
     print("Got Everything You needed.")
-
+    print("*"*20)
 

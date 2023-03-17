@@ -13,7 +13,7 @@ def Finding_All_The_Images(Images_needed, driver):
     driver.find_element("xpath","//*[@id='hdtb-msb']/div[1]/div/div[2]/a").click()
     soup = BeautifulSoup(driver.page_source,"lxml")
     all_details = soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
-    logging.info(">>checking the all details length which is ->: {len(all_details)}")
+    logging.info(f">>checking the all details length which is ->: {len(all_details)}")
     if len(all_details) != 0:
         print("got the image tab")
         logging.info("got the image tab right away") 

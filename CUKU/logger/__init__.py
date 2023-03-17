@@ -2,7 +2,6 @@ import logging
 from datetime import datetime
 from CUKU.constant import *
 import os
-
 LOG_DIR = "logging_directory"
 
 LOG_FILE_NAME = f"logged_{CURRENT_TIMESTAMP}.log"

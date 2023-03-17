@@ -7,7 +7,6 @@ CHROME_DRIVER_LOC = "B:\coding_projects\normal_projects\college_project\driver\c
 
 CURRENT_WORKING_DIR = os.getcwd()
 
-
 COLUMN_1 = "Blog_Link" 
 COLUMN_2 = "Title"
 COLUMN_3 = "Source_Name"
