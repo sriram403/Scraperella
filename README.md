@@ -14,7 +14,7 @@ Scraperella :) Bot which is used to collect images and information about the ima
 ![Alt text](images/result%20photo.png)
 
 
-Hardware & Software Requirement Specification
+## Hardware & Software Requirement Specification
 
 
 OPERATING SYSTEM	:	WINDOWS 10
