@@ -1,1 +1,4 @@
 selenium
+bs4
+Flask==2.2.2
+pandas
