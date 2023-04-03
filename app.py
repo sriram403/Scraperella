@@ -36,13 +36,5 @@ def search():
     result_file = f"{name_to_search}_info.html"
     return render_template(result_file)
 
-@app.route('/reset')
-def reset():
-    global result, name_to_search, details_needed_amount
-    result = None
-    name_to_search = ""
-    details_needed_amount = 0
-    return redirect(url_for('index'))
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
