@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>CUKU Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/style.css') }}">
 </head>
 <body>
     <h1>CUKU Search</h1>
@@ -11,15 +12,22 @@
         <input type="text" id="name_to_search" name="name_to_search"><br>
 
         <label for="details_needed_amount">Details needed:</label>
-        <input type="number" id="details_needed_amount" name="details_needed_amount"><br>
+        <input type="number" id="details_needed_amount" min="0" name="details_needed_amount"><br>
 
         <label for="run_in_backend">Run in backend:</label>
         <input type="checkbox" id="run_in_backend" name="run_in_backend"><br>
 
         <input type="submit" value="Submit">
+        
     </form>
     {% if result_file %}
     <iframe src="{{ url_for('static', filename=result_file) }}" width="100%" height="500"></iframe>
     {% endif %}
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+          document.querySelector('input[type="submit"]').disabled = true;
+        });
+    </script>
 </body>
 </html>
