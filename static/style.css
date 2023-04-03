@@ -1,18 +1,19 @@
 body {
     /* background-image: url('bird.jpg');; */
-    background: linear-gradient(to bottom, #0d59f0, #f4f5f7);
+    background: linear-gradient(to bottom, #0d8af0, #f4f5f7);
     background-size: 100% auto;
     background-repeat: no-repeat; 
     font-family: 'Roboto', sans-serif;
     background-position: center center;
-}
+} 
 
 h1 {
     font-size: 4em;
     text-align: center;
     margin-top: 50px;
-    color: #fff;
-    text-shadow: 0 0 5px #000;
+    color: #c445eb;
+    text-shadow: 4px 5px 5px rgba(22, 1, 1, 0.822);
+    font-family: "Bebas Neue", sans-serif;
 }
 
 #name_to_search {
@@ -29,7 +30,7 @@ form {
     padding: 50px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    box-shadow: 4px 5px 5px rgba(22, 1, 1, 0.822);
 }
 
 label {
@@ -52,7 +53,7 @@ input[type="text"], input[type="number"], input[type="checkbox"], input[type="su
     border: none;
     background-color: rgba(255, 255, 255, 0.863);
     color: #ffffffc2;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    box-shadow: 4px 5px 5px rgba(22, 1, 1, 0.822);
 }
 
 input[type="checkbox"] {
@@ -71,9 +72,14 @@ input[type="checkbox"] {
   }
 
 input[type="submit"] {
-    background-color: #fff;
+    background-color: #fa27c5;
     color: #000;
     cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+    box-shadow: 4px 5px 5px rgba(22, 1, 1, 0.822);
 }
 
 iframe {
