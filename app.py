@@ -9,10 +9,6 @@ details_needed_amount = 0
 
 @app.route('/')
 def index():
-    global result, name_to_search, details_needed_amount
-    result = None  
-    name_to_search = ""
-    details_needed_amount = 0
     return render_template('index.html')
 
 @app.route('/search', methods=['POST'])
@@ -26,8 +22,7 @@ def search():
     if result is not None and new_details_needed_amount == details_needed_amount and new_name_to_search == name_to_search:
         result_file = f"{name_to_search}_info.html"
         return render_template(result_file)
-    
-    print("running search")
+
     name_to_search = new_name_to_search
     details_needed_amount = new_details_needed_amount
 
