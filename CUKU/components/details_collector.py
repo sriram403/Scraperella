@@ -59,10 +59,11 @@ def RUN(search_term:str,images_needed:int,backend):
     logging.info(">>converting the dataframe into html<<")
     print(">>creating html<<")
     pd.set_option('colheader_justify', 'center')
-    dataframe.to_html(f"{search_term}_info.html",escape=False,formatters=dict(Images=util.path_to_image_html))
-    
+    dataframe.to_html(f"templates/{search_term}_info.html",escape=False,formatters=dict(Images=util.path_to_image_html))
+
     logging.info("SUCCESSFULL-> from CUKU :) ")
     time.sleep(2)
     print("Got Everything You needed.")
     print("*"*20)
+    return True
 
