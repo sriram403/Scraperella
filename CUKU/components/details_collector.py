@@ -26,7 +26,8 @@ def RUN(search_term:str,images_needed:int,backend):
         time.sleep(1)
         driver = util.enter_search_term(driver=driver,search_term=search_term,Keys=Keys)
     except:
-        if pathlib.Path(f"templates/{search_term}_info.html").is_file():
+        if not pathlib.Path(f"templates/{search_term}_info.html").is_file():
+            print(pathlib.Path(f"templates/{search_term}_info.html").is_file())
             driver.quit()
             RUN(search_term,images_needed,backend)
             print(">>running except section from enter_search_term<<")
@@ -37,6 +38,7 @@ def RUN(search_term:str,images_needed:int,backend):
         driver,all_images = util.Finding_All_The_Images(Images_needed, driver)
     except Exception as e:
         if not pathlib.Path(f"templates/{search_term}_info.html").is_file():
+            print(pathlib.Path(f"templates/{search_term}_info.html").is_file())
             driver.quit()
             print(e)
             RUN(search_term,images_needed,backend)

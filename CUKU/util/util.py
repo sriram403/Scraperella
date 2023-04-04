@@ -77,10 +77,11 @@ def get_google(webdriver,backend):
     return driver
 
 def enter_search_term(driver,search_term,Keys):
-    # try:
-    box = driver.find_element("xpath","/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
-    # except:
-    #     box = driver.find_element("xpath",'//*[@id="APjFqb"]')
+    try:
+        time.sleep(1)
+        box = driver.find_element("xpath","/html/body/div[1]/div[3]/form/div[1]/div[1]/div[1]/div/div[2]/input")
+    except:
+        box = driver.find_element("xpath",'//*[@id="APjFqb"]')
     box.send_keys(search_term)
     box.send_keys(Keys.ENTER)
     return driver
