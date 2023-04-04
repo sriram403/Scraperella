@@ -13,6 +13,7 @@ def index():
 
 @app.route('/search', methods=['POST'])
 def search():
+    print("running search")
     global result, name_to_search, details_needed_amount
     
     new_name_to_search = request.form.get('name_to_search', '').strip()
