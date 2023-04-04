@@ -18,7 +18,7 @@ def RUN(search_term:str,images_needed:int,backend):
 
     logging.info(">>starting the chrome<<")
     print(">>starting the chrome<<")
-    driver = util.get_google(webdriver=webdriver,backend=backend)
+    driver = util.get_google(webdriver=webdriver,backend=backend,safesearch_off=True)
     
     try:
         logging.info(">>entering the search term<<")

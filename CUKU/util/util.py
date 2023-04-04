@@ -5,6 +5,7 @@ import urllib
 import os
 import pandas as pd
 from CUKU.logger import logging
+from selenium.webdriver.chrome.options import Options
 
 def path_to_image_html(path):
     return '<img src ="'+ path + '" width="120" >'
@@ -63,16 +64,25 @@ def Finding_All_The_Images(Images_needed, driver):
         print("finished_scrolling")    
         all_details=soup.find_all("div",class_="isv-r PNCib MSM1fd BUooTd")
         return driver,all_images
-    
-def get_google(webdriver,backend):
+
+def get_google(webdriver,backend,safesearch_off):
     if backend == True:
         op = webdriver.ChromeOptions()
         op.add_argument('headless')
+        if safesearch_off:
+            op.add_argument('--safebrowsing-disable-download-protection')
+            op.add_argument('--safebrowsing-disable-extension-blacklist')
+            op.add_argument('--safebrowsing-disable-web-content-verification')
         driver = webdriver.Chrome(executable_path=CHROME_DRIVER_LOC,options=op)
         driver.get("https://google.com")
 
     else:
-        driver = webdriver.Chrome(executable_path=CHROME_DRIVER_LOC)
+        op = webdriver.ChromeOptions()
+        if safesearch_off:
+            op.add_argument('--safebrowsing-disable-download-protection')
+            op.add_argument('--safebrowsing-disable-extension-blacklist')
+            op.add_argument('--safebrowsing-disable-web-content-verification')
+        driver = webdriver.Chrome(executable_path=CHROME_DRIVER_LOC,options=op)
         driver.get("https://google.com")
     return driver
 
