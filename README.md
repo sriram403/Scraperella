@@ -13,6 +13,3 @@ Scraperella :) Bot which is used to collect images and information about the ima
 ## The Output 
 ![Alt text](images/result%20photo.png)
 
-
-**Thankyou for your time**
-
