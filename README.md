@@ -13,23 +13,3 @@ Scraperella :) Bot which is used to collect images and information about the ima
 ## The Output 
 ![Alt text](images/result%20photo.png)
 
-
-## Hardware & Software Requirement Specification
-
-
-OPERATING SYSTEM	:	WINDOWS 10
-
-SOFTWARE	:	VISUAL STUDIO CODE
-
-LANGUAGE	:	PYTHON
-
-PROCESSOR	:	Intel® Core (TM) i3 and more PROCESSOR SPEED	:	2.4GHZ
-
-HARD DISK	:	40GB
-
-RAM	:	Minimum 2GB
-
-DATA BASE	:	.HTML file
-
-**Thankyou for your time**
-
