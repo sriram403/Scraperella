@@ -3,7 +3,9 @@ from datetime import datetime
 
 CLASS_NAME = "images_folder"
 
-CHROME_DRIVER_LOC = "B:\coding_projects\normal_projects\college_project\driver\chromedriver.exe"
+CHROME_DRIVER_LOC = "B:\coding_projects\normal_projects\college_project\chromedriverr.exe"
+
+lo = "B:\coding_projects\normal_projects\college_project\driver\chromedriver.exe"
 
 CURRENT_WORKING_DIR = os.getcwd()
 

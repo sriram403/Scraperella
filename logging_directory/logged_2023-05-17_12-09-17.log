@@ -1,0 +1,18 @@
+[2023-05-17 12:09:17,514] werkzeug-WARNING: * Debugger is active!
+[2023-05-17 12:09:17,570] werkzeug-INFO: * Debugger PIN: 577-674-783
+[2023-05-17 12:09:27,741] werkzeug-INFO:127.0.0.1 - - [17/May/2023 12:09:27] "GET / HTTP/1.1" 200 -
+[2023-05-17 12:09:27,833] werkzeug-INFO:127.0.0.1 - - [17/May/2023 12:09:27] "[32mGET /static//style.css HTTP/1.1[0m" 308 -
+[2023-05-17 12:09:27,984] werkzeug-INFO:127.0.0.1 - - [17/May/2023 12:09:27] "GET /static/style.css HTTP/1.1" 200 -
+[2023-05-17 12:09:29,455] werkzeug-INFO:127.0.0.1 - - [17/May/2023 12:09:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2023-05-17 12:09:36,421] root-INFO:>>starting the chrome<<
+[2023-05-17 12:09:49,626] root-INFO:>>entering the search term<<
+[2023-05-17 12:09:52,209] root-INFO:>>finding 10 images<<
+[2023-05-17 12:10:00,471] root-INFO:>>checking the all details length which is ->: 0
+[2023-05-17 12:10:00,471] root-INFO:didn't get the image so checking the near tab
+[2023-05-17 12:10:03,599] root-INFO:>>getting the page source(html)<<
+[2023-05-17 12:10:03,906] root-INFO:>>creating dataframe<<
+[2023-05-17 12:10:07,502] root-INFO:>>created a directory(folder to store image)<<
+[2023-05-17 12:10:07,555] root-INFO:>>storing all the info and saving the image in the directory<<
+[2023-05-17 12:10:07,917] root-INFO:>>converting the dataframe into html<<
+[2023-05-17 12:10:07,969] root-INFO:SUCCESSFULL-> from CUKU :) 
+[2023-05-17 12:10:13,528] werkzeug-INFO:127.0.0.1 - - [17/May/2023 12:10:13] "POST /search HTTP/1.1" 200 -
